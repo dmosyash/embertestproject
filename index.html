@@ -1,0 +1,162 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Travel Journal</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+  <script type="text/x-handlebars">
+    <section id="journal">
+      <header id="header">
+        <h1>Travel Journal</h1>
+		<span {{action "popup"}} >lOG iN</span>
+      </header>
+      <nav class = "menu">
+        <ul>
+          <li>{{#link-to 'CreateJournal'}}Create{{/link-to}}
+          <li>{{#link-to 'ReadJournal'}}Read{{/link-to}}
+          <li>{{#link-to 'EditJournal'}}Edit{{/link-to}}
+        </ul>
+      </nav>
+      <section id="main">
+        {{outlet}}
+
+      <footer id="footer">
+   
+      </footer>
+    </section>
+
+    <footer id="info">
+      <p>Double-click to edit a todo</p>
+    </footer>
+</script>
+
+<script type="text/x-handlebars" id="CreateJournal">
+  <section id="create_section" class="template">
+    <fieldset class="inputform">
+    <ul>
+      <li>
+        <label>Place Name </label>
+        {{input type="text" class="inputclass" id="placename" value=jagah placeholder=" Place Name" action="next"}}
+      </li>
+      <li>
+        <label for = "dot" >Date of Travel </label>
+        {{input type="date" class="inputclass" id="dot" value=tarik placeholder=" Date of Travelling" action="next"}}
+      </li><li>
+        <label for = "days" >Days </label>
+        {{input type="number" class="inputclass" id="days" value=din placeholder=" No. of Days for Trip" action="next"}}
+      </li><li>
+        <label for = "with" >With </label>
+        <select id="with"><option value="friends">Friends</option>
+          <option value="family">Family</option>
+          <option value="myself">Myself</option>
+        </select>
+      </li>  <li>{{#link-to "write" this}}
+        <button {{action "createJournal"}} class="createbutton">Create</button> 
+      {{/link-to}}
+      </li>
+    </ul>
+    </fieldset>
+  </section>
+  {{outlet}}
+</script>
+
+<script type="text/x-handlebars" id="write">
+  <section id="write_section" class="template">
+    <header class="headerTour">
+      <h2>{{jagah}}  Trip</h2>
+      on <label>{{tarik}}</label> For
+      <label>{{din}}</label> days
+    </header>
+    <textarea id="tarea" placeholder="Your Content Goes Here ..." data-bind=journal style="background-color:#f7f7f7"></textarea>
+            {{input type="button" id="addbutton" value="ADD" action="show"}}
+    </section>
+  <section id="content"></section>
+  </section>
+</script>
+
+<script type="text/x-handlebars" id="EditJournal">
+  <section id="edit_section" class="template">
+    <label for = "tourlist" >Select Tour : </label>
+    <ul id="tourlist">
+      {{#each}}
+        <li>
+          <label>{{jagah}}</label>
+        </li>
+      {{/each}}
+    </ul>
+  </section>
+  {{outlet}}
+</script>
+
+<script type="text/x-handlebars" id="ReadJournal">
+  <section id="read_section" class="template">
+    <section class="search">
+      <ul>
+        <li>
+          <label> Search By : </label>
+        </li><li>
+          <label for="searchplace">Place </label>
+          {{!-- <input type="text" class="inputclass" id="searchplace" placeholder=" Search By Place" {{value "dhundhJagah"}} {{ action 'search' 'dhundhJagah'}}/>--}}
+          <form {{action 'search' 'searchplace' on="submit"}}>
+              {{input type="text" class="inputclass" id="searchplace" placeholder=" Search By Place" value=dhundhJagah }}        
+          </form>
+          
+          <ul>
+            {{#each}}
+              <li>
+                {{input type="checkbox" id=tripnaam action="searchplace"}}{{jagah}}
+              </li>
+            {{/each}}
+          </ul>
+        </li><li>
+          <label for="searchdate">Date </label>
+          {{input type="date" class="inputclass" id="searchdate" value=dhundhTarik placeholder=" Search By Date" action="searchByDate"}}
+        </li><li>
+          <label for="searchwith">With </label>
+          <ul id="searchwith" >
+            <li >
+              <input type="checkbox" id="chkFriends" checked="searchByWith" />
+              <label> Friends </label>
+            </li>
+            <li >
+              <input type="checkbox" id="chkFamily" action="searchByWith"/>
+              <label> Family </label>
+            </li>
+            <li >
+              <input type="checkbox" id="chkMyself" action="searchByWith"/>
+              <label> Myself </label>
+            </li> 
+          </ul> 
+        </li>
+      </ul>
+    </section>
+    <section id="view_section" class="viewclass">
+    <ul>
+      {{#each list}}
+        <li class="list">
+          <h2>{{jagah}} Trip</h2>
+          on <label>{{tarik}}</label> for
+          <label>{{din}}</label> days
+        </li>
+      {{/each}}
+      </ul>
+    </section>
+    {{outlet}}
+  </section>
+</script>
+
+<script type="text/x-handlebars" id="view">
+
+</script>
+
+	<script src="js/libs/jquery.js"></script>
+	<script src="js/libs/handlebars.js"></script>
+	<script src="js/libs/ember.js"></script>
+	<script src="js/libs/emberdata.js"></script>
+	<script src="js/application.js"></script>
+	<script src="js/router.js"></script>
+	<script src="js/models/journal.js"></script>
+	<script src="js/controllers/controller.js"></script>
+  </body>
+</html>

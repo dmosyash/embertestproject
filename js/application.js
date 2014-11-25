@@ -1,0 +1,3 @@
+// This File is used to initialize......
+
+window.Journals = Ember.Application.create();

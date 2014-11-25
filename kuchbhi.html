@@ -1,0 +1,19 @@
+<html>
+<head>
+welcome
+</head>
+<body>
+<script>
+kar = function() {
+
+var txt=document.getElementById('txt').value;
+       txt = txt.replace(/(style=["'])(align:left|right|center|justify)?(?:.*)[^\"\']*["']/gi,"$1$2")
+alert(txt);
+document.getElementById('ans').innerHTML=txt;
+}
+</script>
+<textarea style="background-image: url(bird.jpg);   padding-left: 16px;"></textarea>
+<input type="button" id="click" value="click" onclick="kar();"/>
+<div id="ans">jhb </div>
+</html>
+</body>
