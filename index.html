@@ -97,7 +97,7 @@
           <label> Search By : </label>
         </li><li>
           <label for="searchplace">Place </label>
-          {{!-- <input type="text" class="inputclass" id="searchplace" placeholder=" Search By Place" {{value "dhundhJagah"}} {{ action 'search' 'dhundhJagah'}}/>--}}
+          
           <form {{action 'search' 'searchplace' on="submit"}}>
               {{input type="text" class="inputclass" id="searchplace" placeholder=" Search By Place" value=dhundhJagah }}        
           </form>

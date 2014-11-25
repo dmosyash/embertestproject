@@ -30,7 +30,14 @@ Journals.CreateJournalController = Ember.ObjectController.extend({
   }.observes('dhundhjagah')
     }*/
 });
+
+
 Journals.ReadJournalController = Ember.ArrayController.extend({
+    
+    
+   dhundhJagahObserver : function() {
+    console.log('okk');
+  }.observes('dhundhJagah'),
   
   actions : {
     search : function(id) {
@@ -58,10 +65,7 @@ Journals.ReadJournalController = Ember.ArrayController.extend({
       }
       this.set('list',list);
     }
-  },
-   dhundhJagah : function() {
-    console.log('ok');
-  }.observes('dhundhJagah')
+  }
 });
 
 
