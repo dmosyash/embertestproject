@@ -97,11 +97,7 @@
           <label> Search By : </label>
         </li><li>
           <label for="searchplace">Place </label>
-          
-          <form {{action 'search' 'searchplace' on="submit"}}>
-              {{input type="text" class="inputclass" id="searchplace" placeholder=" Search By Place" value=dhundhJagah }}        
-          </form>
-          
+            {{search-place}}
           <ul>
             {{#each}}
               <li>

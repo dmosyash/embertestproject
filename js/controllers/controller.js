@@ -6,39 +6,19 @@ Journals.CreateJournalController = Ember.ObjectController.extend({
   },
     jagah : function() {
     }.observes('jagah')
-    /*
-    createTodo: function() {
-      // Get the todo title set by the "New Todo" text field
-      var title = this.get('newTitle');
-      if (!title) { return false; }
-      if (!title.trim()) { return; }
-
-      // Create the new Todo model
-      var todo = this.store.createRecord('todo', {
-        title: title,
-        isCompleted: false
-      });
-
-      // Clear the "New Todo" text field
-      this.set('newTitle', '');
-
-      // Save the new model
-      todo.save();
-      ,
-   dhundhjagah : function() {
-    alert(this.get('dhundhjagah'));
-  }.observes('dhundhjagah')
-    }*/
 });
 
+Journals.SearchPlaceComponent  = Ember.TextField.extend ({
+  classNames : ['inputclass'],
+  placeholder : 'Search By Place',
+  keyDown : function(e) {
+    //want the model here
+  },
+  action : 'searchByPlace'
+});
 
 Journals.ReadJournalController = Ember.ArrayController.extend({
-    
-    
-   dhundhJagahObserver : function() {
-    console.log('okk');
-  }.observes('dhundhJagah'),
-  
+      
   actions : {
     search : function(id) {
       var model = this.get('model');
@@ -68,19 +48,3 @@ Journals.ReadJournalController = Ember.ArrayController.extend({
   }
 });
 
-
-/*Todos.TodoController = Ember.ObjectController.extend({
-  isCompleted: function(key, value){
-    var model = this.get('model');
-
-    if (value === undefined) {
-      // property being used as a getter
-      return model.get('isCompleted');
-    } else {
-      // property being used as a setter
-      model.set('isCompleted', value);
-      model.save();
-      return value;
-    }
-  }.property('model.isCompleted')
-});*/
